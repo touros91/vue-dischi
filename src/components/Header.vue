@@ -16,10 +16,11 @@ export default {
 <style lang="scss" scoped>
 @import '../assets/style/common';
     header {
+        height: 50px;
         padding: 10px;
-        background-color: $bgColorLight;
+        background-color: $bgHeader;
         .logo {
-            max-width: 50px;
+            max-width: 40px;
             img {
                 width: 100%;
             }
