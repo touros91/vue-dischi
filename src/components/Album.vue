@@ -27,6 +27,7 @@ export default {
     background-color: $bgHeader;
     text-align: center;
     color: $mainTextColor;
+    padding-bottom: 9px;
     .image{
         max-width: 130px;
         margin: 0 auto;
