@@ -25,7 +25,6 @@ export default {
   methods: {
     filterGenre(selectedValue){
       this.option = selectedValue;
-      console.log(this.option);
     }
   }
 }

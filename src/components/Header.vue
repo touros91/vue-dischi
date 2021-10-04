@@ -5,22 +5,18 @@
       </div>
       <select name="" id="" v-model="selectedValue" @change="$emit(`selectGenre`, selectedValue)">
         <option value="">Seleziona genere</option>
-        <option value="rock">Rock</option>
-        <option value="pop">Pop</option>
-        <option value="jazz">Jazz</option>
-        <option value="metal">Metal</option>
+        <option value="Rock">Rock</option>
+        <option value="Pop">Pop</option>
+        <option value="Jazz">Jazz</option>
+        <option value="Metal">Metal</option>
     </select> 
   </header>
 </template>
 
 <script>
-// import Select from './Select.vue';
 
 export default {
     name: 'Header',
-    // components: {
-    //     Select
-    // },
     props: ['logoSrc', 'logoAlt'],
     data(){
         return {

@@ -1,8 +1,7 @@
 <template>
     <section>
         <div class="albums-container">
-            <Album v-for="(album, index) in albums" :key="index" :card="album"/>           
-            <h1>{{genre}}</h1>
+            <Album v-for="(album, index) in filteredAlbums" :key="index" :card="album"/>        
         </div>
     </section>
 </template>
@@ -19,14 +18,27 @@ export default {
     },
     data(){
         return {
-            albums: []
+            albums: [],
         }
     },
     created(){
         axios.get('https://flynn.boolean.careers/exercises/api/array/music')
         .then((resp) => {
             this.albums = resp.data.response;
-        })
+        });
+    },
+    computed: {
+        filteredAlbums(){
+            const albumsFiltered = this.albums.filter(
+                (elm) => {
+                    if (this.genre == elm.genre || this.genre == "") {
+                        return true;
+                    } 
+                    return false;
+                }
+            );
+            return albumsFiltered;
+        }
     }
 }
 </script>
