@@ -1,7 +1,7 @@
 <template>
     <div class="album">
         <div class="image">
-            <img :src="card.poster" alt="">
+            <img :src="card.poster" :alt="card.title">
         </div>
         <div class="info">
             <h4 class="title">{{card.title.toUpperCase()}}</h4>
