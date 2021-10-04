@@ -2,6 +2,7 @@
     <section>
         <div class="albums-container">
             <Album v-for="(album, index) in albums" :key="index" :card="album"/>           
+            <h1>{{genre}}</h1>
         </div>
     </section>
 </template>
@@ -12,6 +13,7 @@ import Album from '../components/Album.vue';
 
 export default {
     name: 'Albums',
+    props: ['genre'],
     components: {
         Album
     },

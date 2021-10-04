@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <Header :logoSrc="require(`./assets/spotify-logo.png`)" :logoAlt="`Spotify Logo`"/>
+    <Header :logoSrc="require(`./assets/spotify-logo.png`)" :logoAlt="`Spotify Logo`" @selectGenre="filterGenre"/>
     <main>
-      <Albums/>
+      <Albums :genre="option"/>
     </main> 
   </div>
 </template>
@@ -16,6 +16,17 @@ export default {
   components: {
     Header,
     Albums
+  },
+  data(){
+    return {
+      option: "",
+    }
+  },
+  methods: {
+    filterGenre(selectedValue){
+      this.option = selectedValue;
+      console.log(this.option);
+    }
   }
 }
 </script>
