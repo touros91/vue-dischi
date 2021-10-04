@@ -4,7 +4,8 @@
           <img :src="logoSrc" :alt="logoAlt">
       </div>
       <select name="" id="" v-model="selectedValue" @change="$emit(`selectGenre`, selectedValue)">
-        <option v-for="(album, index) in albums" :key="index">{{album.genre}}</option>
+          <option value="">Seleziona genere</option>
+        <option v-for="(album, index) in dynamicGenres" :key="index">{{album}}</option>
     </select> 
   </header>
 </template>
@@ -26,6 +27,22 @@ export default {
         .then((resp) => {
             this.albums = resp.data.response;
         });
+    },
+    computed: {
+        dynamicGenres(){
+            var filteredGenres = [];
+            this.albums.filter(
+                (elm)=> {
+            // se non è duplicato ritorna true
+                    if (filteredGenres.indexOf(elm.genre) == -1) {
+                        filteredGenres.push(elm.genre);
+                        return true;
+                    }
+                    return false;
+                }
+            );
+            return filteredGenres;
+        }
     }
 }
 </script>
