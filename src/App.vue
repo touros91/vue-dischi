@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header :logoSrc="require(`./assets/spotify-logo.png`)" :logoAlt="`Logo Image`"/>
+    <Header :logoSrc="require(`./assets/spotify-logo.png`)" :logoAlt="`Spotify Logo`"/>
     <main>
       <Albums/>
     </main> 
