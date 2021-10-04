@@ -1,7 +1,8 @@
 <template>
     <section>
         <div class="albums-container">
-            <Album v-for="(album, index) in filteredAlbums" :key="index" :card="album"/>           
+            <Album v-show="filteredAlbumsbyAuthor.length > 1" v-for="(album, index) in filteredAlbums" :key="index" :card="album"/>  
+            <Album v-show="filteredAlbumsbyAuthor.length == 1" v-for="(album, index) in filteredAlbumsbyAuthor" :key="index" :card="album"/>          
         </div>
     </section>
 </template>
@@ -12,7 +13,7 @@ import Album from '../components/Album.vue';
 
 export default {
     name: 'Albums',
-    props: ['genre'],
+    props: ['genre', 'author'],
     components: {
         Album
     },
@@ -38,6 +39,17 @@ export default {
                 }
             );
             return albumsFiltered;
+        },
+        filteredAlbumsbyAuthor(){
+            const authorFiltered = this.albums.filter(
+                (elm) => {
+                    if (this.author == elm.author || this.author == "") {
+                        return true;
+                    } 
+                    return false;
+                }
+            );
+            return authorFiltered;
         }
     }
 }

@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <Header :logoSrc="require(`./assets/spotify-logo.png`)" :logoAlt="`Spotify Logo`" @selectGenre="filterGenre"/>
+    <Header :logoSrc="require(`./assets/spotify-logo.png`)" :logoAlt="`Spotify Logo`" @selectGenre="filterGenre" @selectAuthor="filterAuthor"/>
     <main>
-      <Albums :genre="option"/>
+      <Albums :genre="option" :author="authors"/>
     </main> 
   </div>
 </template>
@@ -20,11 +20,15 @@ export default {
   data(){
     return {
       option: "",
+      authors:""
     }
   },
   methods: {
     filterGenre(selectedValue){
       this.option = selectedValue;
+    },
+    filterAuthor(selectedValue){
+      this.authors = selectedValue;
     }
   }
 }
