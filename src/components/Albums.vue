@@ -1,7 +1,7 @@
 <template>
     <section>
         <div class="albums-container">
-            <Album v-for="(album, index) in filteredAlbums" :key="index" :card="album"/>        
+            <Album v-for="(album, index) in filteredAlbums" :key="index" :card="album"/>           
         </div>
     </section>
 </template>

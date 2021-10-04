@@ -4,24 +4,28 @@
           <img :src="logoSrc" :alt="logoAlt">
       </div>
       <select name="" id="" v-model="selectedValue" @change="$emit(`selectGenre`, selectedValue)">
-        <option value="">Seleziona genere</option>
-        <option value="Rock">Rock</option>
-        <option value="Pop">Pop</option>
-        <option value="Jazz">Jazz</option>
-        <option value="Metal">Metal</option>
+        <option v-for="(album, index) in albums" :key="index">{{album.genre}}</option>
     </select> 
   </header>
 </template>
 
 <script>
+import axios from 'axios';
 
 export default {
     name: 'Header',
     props: ['logoSrc', 'logoAlt'],
     data(){
         return {
-            selectedValue: ""
+            selectedValue: "",
+            albums: []
         }
+    },
+    created(){
+        axios.get('https://flynn.boolean.careers/exercises/api/array/music')
+        .then((resp) => {
+            this.albums = resp.data.response;
+        });
     }
 }
 </script>
