@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <Header :logoSrc="require(`./assets/spotify-logo.png`)" :logoAlt="`Spotify Logo`" @selectGenre="filterGenre" @selectAuthor="filterAuthor"/>
+    <Header :logoSrc="require(`./assets/spotify-logo.png`)" :logoAlt="`Spotify Logo`" @selectGenre="filterGenre" @selectAuthor="filterAuthor" :genreList="genreList" :authorList="authorList"/>
     <main>
-      <Albums :genre="option" :author="authors"/>
+      <Albums :genre="option" :author="authors" @genreList="genreListEvent" @authorList="authorListEvent"/>
     </main> 
   </div>
 </template>
@@ -20,7 +20,9 @@ export default {
   data(){
     return {
       option: "",
-      authors:""
+      authors:"",
+      genreList: [],
+      authorList: []
     }
   },
   methods: {
@@ -29,6 +31,12 @@ export default {
     },
     filterAuthor(selectedValue){
       this.authors = selectedValue;
+    },
+    genreListEvent(list){
+      this.genreList = list;
+    },
+    authorListEvent(list){
+      this.authorList = list;
     }
   }
 }

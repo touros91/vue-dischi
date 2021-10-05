@@ -26,6 +26,25 @@ export default {
         axios.get('https://flynn.boolean.careers/exercises/api/array/music')
         .then((resp) => {
             this.albums = resp.data.response;
+            const genreList = [];
+            this.albums.forEach(
+                (elm) => {
+                    if(!genreList.includes(elm.genre)){
+                        genreList.push(elm.genre);
+                    }
+                }
+            );
+            this.$emit('genreList', genreList);
+
+            const authorList = [];
+            this.albums.forEach(
+                (elm) => {
+                    if(!authorList.includes(elm.author)){
+                        authorList.push(elm.author);
+                    }
+                }
+            );
+            this.$emit('authorList', authorList);
         });
     },
     computed: {
